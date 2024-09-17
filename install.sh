@@ -22,7 +22,7 @@ folder="$HOME/.ssh/public-keys"
 for file in $HOME/.ssh/public-keys/*.pub; do
   echo "Installing public key $file"
   if [ -f "$file" ]; then 
-       cat "$file" >>  "$HOME/.ssh/autorized_key"
+       cat "$file" >>  "$HOME/.ssh/authorized_keys"
   fi
 done
 
