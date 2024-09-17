@@ -7,7 +7,7 @@ SSH_ENV="$HOME/.ssh/agent-environment"
 start_agent() {
     # mata os processos perdidos ( inda não sei as implicações )
     pkill ssh-agent 
-    eval $(ssh-agent -s) > "$SSH_ENV"
+    echo $(ssh-agent -s) > "$SSH_ENV"
     chmod 600 "$SSH_ENV"
 }
 
@@ -30,3 +30,5 @@ for file in ~/.ssh/private-keys/*; do
        ssh-add "$file" > /dev/null 2>&1
   fi
 done
+
+# source ~/.bashrc
