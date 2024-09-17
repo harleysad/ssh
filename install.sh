@@ -50,3 +50,6 @@ else
     echo "$SCRIPT_TO_SOURCE" >> "$TARGET_FILE"
     echo "['$SCRIPT_TO_SOURCE'] added to $TARGET_FILE."
 fi
+
+chmod -R 700 $HOME/.ssh/private-keys
+chmod -R 700 $HOME/.ssh/public-keys
