@@ -13,12 +13,14 @@ git clone https://github.com/harleysad/ssh.git ~/.ssh
 
 # mkdir "$HOME/.ssh"
 # cp -R ./* "$HOME/.ssh"
+
 chmod 700 $HOME/.ssh/*.sh
 
 folder="$HOME/.ssh/public-keys"
 
 #enable public keys to login
-for file in "$HOME/.ssh/public-keys/*.pub"; do
+for file in $HOME/.ssh/public-keys/*.pub; do
+  echo "Installing public key $file"
   if [ -f "$file" ]; then 
        cat "$file" >>  "$HOME/.ssh/autorized_key"
   fi
