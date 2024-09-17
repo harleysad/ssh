@@ -31,4 +31,3 @@ for file in ~/.ssh/private-keys/*; do
   fi
 done
 
-# source ~/.bashrc
