@@ -1,17 +1,22 @@
 #/bin/bash
 
-#check if ssh-agente is running
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval $(ssh-agent) > /dev/null 2>&1
-fi
+# Arquivo para salvar o ambiente do ssh-agent
+SSH_ENV="$HOME/.ssh/agent-environment"
 
-if [ $? -ne 0 ]; then
-  echo "Error loading ssh-agent"
-  exit 1
-fi
+# Função para iniciar o ssh-agent
+start_agent() {
+    echo "Iniciando novo ssh-agent..."
+    eval $(ssh-agent -s) > "$SSH_ENV"
+    chmod 600 "$SSH_ENV"
+}
 
-for file in ~/.ssh/private-keys/*; do
-  if [ -f "$file" ]; then 
-       ssh-add "$file" > /dev/null 2>&1
-  fi
-done
+# Carregar variáveis de ambiente salvas
+if [ -f "$SSH_ENV" ]; then
+    source "$SSH_ENV" > /dev/null
+    # Verifica se o agente ainda está rodando
+    if ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
+        start_agent
+    fi
+else
+    start_agent
+fi
