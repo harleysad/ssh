@@ -20,3 +20,9 @@ if [ -f "$SSH_ENV" ]; then
 else
     start_agent
 fi
+#carrega as chaves privadas
+for file in ~/.ssh/private-keys/*; do
+  if [ -f "$file" ]; then 
+       ssh-add "$file" > /dev/null 2>&1
+  fi
+done
