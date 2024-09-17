@@ -34,7 +34,7 @@ else
   exit 1
 fi
 
-7z e $HOME/.ssh/private-keys.7z ~/.ssh/
+7z e $HOME/.ssh/private-keys.7z $HOME/.ssh/
 if [ $? -ne 0 ]; then
   echo "Error extracting: private-keys.7z"
   exit 1
