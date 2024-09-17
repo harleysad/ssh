@@ -6,6 +6,7 @@ SSH_ENV="$HOME/.ssh/agent-environment"
 # Função para iniciar o ssh-agent
 start_agent() {
     # mata os processos perdidos ( inda não sei as implicações )
+    rm $SSH_ENV
     pkill ssh-agent 
     echo $(ssh-agent -s) > "$SSH_ENV"
     chmod 600 "$SSH_ENV"
