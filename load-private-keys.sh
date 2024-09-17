@@ -5,6 +5,7 @@ SSH_ENV="$HOME/.ssh/agent-environment"
 
 # Função para iniciar o ssh-agent
 start_agent() {
+    # echo "iniciou.."
     rm $SSH_ENV > /dev/null 2>&1
     # mata os processos perdidos ( inda não sei as implicações )
     pkill ssh-agent 
@@ -16,6 +17,7 @@ start_agent() {
 if [ -f "$SSH_ENV" ]; then
     # carrega as configurações encontradas
     source "$SSH_ENV" > /dev/null
+    # echo "pid do arquivo $SSH_AGENT_PID"
     # verifica se o pid do agente carregado esta rodando
     # se não tem vai carregar um novo agente
     if ! ps -p $SSH_AGENT_PID > /dev/null 2>&1; then
@@ -34,3 +36,4 @@ for file in ~/.ssh/private-keys/*; do
        ssh-add "$file" > /dev/null 2>&1
   fi
 done
+# ssh-add -l
