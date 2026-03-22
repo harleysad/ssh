@@ -6,7 +6,7 @@ These instructions take absolute precedence over general workflows for any AI ag
 
 Before performing any `git commit`, the AI agent **must**:
 
-1.  **Extract Chat Context:** Capture all user instructions, technical rationale, and major actions taken during the session.
+1.  **Extract Chat Context:** Capture all user messages, technical rationale, and major actions taken during the session in a **dialogue/transcript style** (User messages vs. AI responses).
 2.  **Archive the Session:** Save this context into a new or existing file within the `chat-history/` directory.
     -   **Naming Convention:** `YYYY-MM-DD-<brief-description>.md`
 3.  **Include in Commit:** Stage the newly created/updated history file along with the other changes.
