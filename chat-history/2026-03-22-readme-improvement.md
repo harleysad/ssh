@@ -11,6 +11,10 @@ The user requested a "resume" of the project and then specified the following in
 > create a aprropiate folder and save all this chat ( i want, what i said to you to make changes, how this is a wide code changes, this chat is important )
 > save changes at github"
 
+### Additional Instructions (New)
+> 1) at each feature ajust readme
+> 2) always uptate translated portuguese readme
+
 ### Important User Clarification
 The user explicitly stated:
 > "this is a personal project, who use it must known how to use and shelf risks, DONT'T CHANGE CODE!!!!"
@@ -20,10 +24,10 @@ The user explicitly stated:
 1.  **Documentation Improvement:**
     -   Redesigned `README.md` with a professional layout and cross-links.
     -   Created `README.pt-br.md` with the Portuguese (Brazil) translation.
-2.  **AI Workflow Automation:**
-    -   Created `GEMINI.md` to establish a permanent mandate for future AI agents.
-    -   **New Rule:** AI agents must archive chat history with every commit.
-    -   **New Rule:** Explicit prohibition of unauthorized changes to core installation scripts.
+2.  **AI Workflow Automation (GEMINI.md):**
+    -   **Mandatory Chat Archival:** New rule requiring chat history preservation with every commit.
+    -   **Mandatory Documentation Parity:** New rule requiring `README.md` and `README.pt-br.md` to be updated together for every feature change.
+    -   **Code Protection:** Explicit prohibition of unauthorized changes to core installation scripts.
 3.  **Chat History Archival:**
     -   Created the `chat-history/` folder and this summary.
 4.  **Version Control (Git Flow):**
@@ -32,7 +36,5 @@ The user explicitly stated:
 ## Project Structure (Protected)
 - `public-keys/`: Public keys for various machines.
 - `private-keys.7z`: Password-protected archive for private keys.
-- `install.sh`: Linux setup script (No code changes).
-- `install.ps1`: Windows setup script (No code changes).
-- `load-private-keys.sh`: Linux helper script (No code changes).
-- `GEMINI.md`: AI Agent Mandates (New).
+- `install.sh`, `install.ps1`, `load-private-keys.sh`: Core scripts (No code changes).
+- `GEMINI.md`: AI Agent Mandates (Updated).

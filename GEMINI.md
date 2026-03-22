@@ -12,6 +12,11 @@ Before performing any `git commit`, the AI agent **must**:
 3.  **Include in Commit:** Stage the newly created/updated history file along with the other changes.
 4.  **Reference in Message:** Mention the chat history update in the commit message.
 
+## 📝 Documentation: Mandatory Updates
+
+- **Feature Adjustments:** Any modification to the project (even if it's structural or documentation-only) **must** be reflected in the `README.md`.
+- **Multilingual Consistency:** For every update to the default `README.md`, the AI agent **must** update the Portuguese (Brazil) version (`README.pt-br.md`) to maintain perfect parity.
+
 ## 🚫 Safe Zone: Core Logic Protection
 
 - **No Unauthorized Code Changes:** Do not modify the core logic of the installation scripts (`install.sh`, `install.ps1`, `load-private-keys.sh`) unless explicitly directed by the user with a specific, detailed instruction.
