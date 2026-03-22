@@ -1,58 +1,78 @@
 # SSH Key Setup Automation
 
-This repository provides scripts to automate the configuration of your public and private SSH keys across multiple machines.
+Automate the configuration and deployment of SSH public and private keys across multiple environments with a single command. This repository provides a secure, streamlined way to manage your SSH credentials using encrypted archives and automated scripts for both Linux and Windows.
 
-> **Warning:** Storing your keys in a public repository is not secure. Here, the key files are compressed and protected with a password. You should use your own keys and password-protect them before using these scripts.
+[**Leia em Português**](README.pt-br.md)
 
-## Requirements
-- Ensure that both **Git** and **7-Zip** are installed and available in your system's PATH before running the setup scripts.
+---
 
-## Usage
+## 🔒 Security Overview
 
-### Linux
-Run the following command to automatically download and execute the setup script:
+> [!CAUTION]
+> **Never store raw private keys in a public repository.**
+> This project uses a password-protected **7-Zip** archive (`private-keys.7z`) to safeguard sensitive data. Ensure you use a strong, unique password when creating your archive.
+
+## 📋 Prerequisites
+
+Before running the setup scripts, ensure the following tools are installed and available in your system's `PATH`:
+
+- **Git** (for repository management)
+- **7-Zip** (for secure key extraction)
+- **SSH Client** (OpenSSH)
+
+## 🚀 Quick Start
+
+### 🐧 Linux / macOS
+Run the following command to automatically download the setup script and configure your keys:
 
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/harleysad/ssh/main/install.sh) ~/.ssh
 ```
 
-> **Note:** If you fork or copy this repository, update the URL above to point to your own repository location.
+### 🪟 Windows (PowerShell)
+> [!IMPORTANT]
+> **Administrator privileges** are required to start the `ssh-agent` service.
 
-### Windows
-> **Note:** Administrator privileges are required to start the ssh-agent service.
-
-Run the following command in PowerShell:
+Execute this command in an elevated PowerShell session:
 
 ```powershell
 Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/harleysad/ssh/main/install.ps1").Content
 ```
 
-> **Note:** If you fork or copy this repository, update the URL above to point to your own repository location.
+---
 
-## How It Works
-- Downloads your SSH key repository
-- Extracts the password-protected archive containing your private keys
-- Loads both public and private keys into the ssh-agent
+## 🛠️ How It Works
 
-## Preparing Your Keys
-- Place your public keys in the `public-keys` folder before pushing or sharing the repository. This allows anyone who clones the project to access the public keys as needed.
-- Compress your private keys into the `private-keys.7z` archive using 7-Zip and always set a strong password for the archive. This ensures your private keys remain protected, even if the repository is accessed by others.
+1.  **Repository Cloning:** The script clones this repository into your local `.ssh` directory.
+2.  **Public Key Setup:** Public keys from the `public-keys/` directory are added to your environment.
+3.  **Private Key Extraction:** The script prompts for the password to extract `private-keys.7z`.
+4.  **SSH Agent Integration:** Automatically starts the `ssh-agent` and loads your keys, ensuring they are ready for immediate use.
 
-## Security Notice
-- Never share your private keys or passwords publicly.
-- Always use strong, unique passwords to protect your key archives.
+## 📂 Project Structure
 
-## Customization
-You can adapt these scripts for your own keys. Make sure to:
-- Replace the key files with your own
-- Protect your private keys with a strong password
-- Update the repository URLs if you fork or move the project
+- `public-keys/`: Place your public keys here (`.pub` format).
+- `private-keys.7z`: A password-protected archive containing your private keys.
+- `install.sh`: Setup script for Linux/Unix systems.
+- `install.ps1`: Setup script for Windows (PowerShell).
+- `load-private-keys.sh`: Helper script to persist keys across shell sessions (Linux).
+
+## 🔧 Customization
+
+To adapt this project for your own use:
+
+1.  **Fork** this repository.
+2.  **Update URLs:** Replace the GitHub links in the Quick Start section with your fork's URL.
+3.  **Replace Keys:**
+    -   Add your public keys to the `public-keys/` folder.
+    -   Create a new `private-keys.7z` archive with your private keys and a strong password.
 
 ---
 
-## Generating SSH Keys
+## 🔑 Generating New Keys
 
-### Linux
+If you need to generate a new SSH key pair:
+
+### Linux / macOS
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
@@ -62,8 +82,6 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-Follow the prompts to set a file location and passphrase for your new key pair.
-
 ---
 
-For questions or suggestions, please open an issue or contact the repository maintainer.
+*Maintained by [Harley SAD](https://github.com/harleysad).*
